@@ -8,15 +8,10 @@ public class Main {
         System.out.println("Какая у вас операционная система? (цифра)");
         System.out.println("0 - IOS, 1 - Android:");
         byte os = new Scanner(System.in).nextByte();
-        switch (os){
-            case 0:
-                System.out.println("Установите версию приложения для iOS по ссылке.");
-                break;
-            case 1:
+        if (os==0) {
+            System.out.println("Установите версию приложения для iOS по ссылке.");
+        } else if (os==1){
                 System.out.println("Установите версию приложения для Android по ссылке.");
-                break;
-            default:
-                System.out.println("Неверный ввод.");
         }
         System.out.println("***");
 
@@ -54,39 +49,27 @@ public class Main {
         System.out.println("Введите год числом (после 1584):");
         int year = new Scanner(System.in).nextInt();
         var result = "";
-        if (year>1584){
-            if (year%4==0){
-                if (year%100==0){
-                    if (year%400==0){
-                        result = " год является високосным.";
-                    }else{
-                        result = " год не является високосным.";
-                    }
-                }else{
-                    result = " год является високосным.";
-                }
-            }else{
-                result = " год не является високосным.";
-            }
-            System.out.println(year +result);
+        if (year>1584 && year%4==0 && (year%100!=0 || year%400==0)){
+            result = " год является високосным.";
+        } else {
+            result = " год не является високосным.";
         }
+        System.out.println(year +result);
         System.out.println("***");
 
         //Task#4
         System.out.println("Введите расстояние до офиса (в километрах):");
         byte deliveryDistance = new Scanner(System.in).nextByte();
-        if (0<deliveryDistance) {
-            if (deliveryDistance < 20) {
-                result = "1";
-            } else if (deliveryDistance < 60){
-                result = "2";
-            } else if (deliveryDistance <= 100){
-                result = "3";
-            }else{
-                result = "Доставка не осуществляется.";
-            }
-                System.out.println("Потребуется дней: " +result);
+        if (deliveryDistance < 20) {
+            result = "1";
+        } else if (deliveryDistance < 60){
+            result = "2";
+        } else if (deliveryDistance <= 100){
+            result = "3";
+        }else{
+            result = "Доставка не осуществляется.";
         }
+        System.out.println("Потребуется дней: " +result);
         System.out.println("***");
 
         //Task#5
